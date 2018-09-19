@@ -6,16 +6,28 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.h2y.lms.service.CurriculumService;
+import com.h2y.lms.vo.CurriculumVO;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
 public class LmsController {
+	
+	@Autowired
+	private CurriculumService cs;
+	private ModelAndView mav;
+	private CurriculumVO curriculumVO;
+	
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -86,9 +98,13 @@ public class LmsController {
 	//--교육 관리 메뉴--
 	//진행 중인 과정 페이지
 	@RequestMapping(value = "curriculum_List", method = RequestMethod.GET)
-	public String curriculum_List() {
+	public ModelAndView curriculum_List() {
+		System.out.println("왔섭?");
+		mav = new ModelAndView();
 		
-		return "curriculum/curriculum_List";
+		mav = cs.curriculumList();
+		
+		return mav;
 	}
 	
 	//훈련일지 페이지
@@ -146,6 +162,7 @@ public class LmsController {
 				
 		return "curriculum/curriculum_CounselingList";
 	}
+	
 	//훈련일지 상세보기 페이지
 	@RequestMapping(value = "curriculum_TrainingLogView", method = RequestMethod.GET)
 	public String curriculum_TrainingLogView() {

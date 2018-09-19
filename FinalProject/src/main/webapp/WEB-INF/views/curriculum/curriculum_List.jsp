@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!doctype html>
 <html>
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
@@ -167,7 +170,7 @@
                                     <a href="curriculum_List">진행중인 과정(curriculum_List.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="curriculum_Log">진행중인 과정 내부 메뉴-훈련일지(curriculum_Log.jsp)</a>
+                                    <a href="curriculum_TrainingLogList">진행중인 과정 내부 메뉴-훈련일지(curriculum_TrainingLogList.jsp)</a>
                                 </li>
                                 <li>
                                     <a href="curriculum_Grade">진행중인 과정 내부 메뉴-성적관리(curriculum_Grade.jsp)</a>
@@ -331,13 +334,17 @@
                                                     <td>임태훈</td>
                                                     <td>30</td>
                                                 </tr>
+                                                <c:forEach var = "curList" items = "${curList }">
+                                                <c:if test="${curList. cur_state == 1}">
                                                 <tr class="warning">
-                                                    <td>7</td>
-                                                    <td>웹 개발자를 위한 정보처리산업기사 양성과정</td>
-                                                    <td>2018.04.26~2018.10.26</td>
-                                                    <td>전영걸</td>
-                                                    <td>30</td>
+                                                    <td>${curList. cur_state} : 상태</td>
+                                                    <td>${curList. cur_subject} : 교육과정명</td>
+                                                    <td>${curList. cur_start} ~ ${curList. cur_end}</td>
+                                                    <td>${curList. cur_prof}</td>
+                                                    <td>${curList. cur_code}</td>
                                                 </tr>
+                                                </c:if>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

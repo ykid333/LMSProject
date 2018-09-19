@@ -167,7 +167,7 @@
                                     <a href="curriculum_List">진행중인 과정(curriculum_List.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="curriculum_Log">진행중인 과정 내부 메뉴-훈련일지(curriculum_Log.jsp)</a>
+                                    <a href="curriculum_TrainingLogList">진행중인 과정 내부 메뉴-훈련일지(curriculum_Log.jsp)</a>
                                 </li>
                                 <li>
                                     <a href="curriculum_Grade">진행중인 과정 내부 메뉴-성적관리(curriculum_Grade.jsp)</a>
