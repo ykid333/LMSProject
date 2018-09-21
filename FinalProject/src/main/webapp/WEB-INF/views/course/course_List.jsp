@@ -3,13 +3,12 @@
 <!doctype html>
 <html>
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
-
 <head>
     <meta charset="utf-8" />
     <link rel="apple-touch-icon" sizes="76x76" href="resources/assets/img/apple-icon.png" />
     <link rel="icon" type="image/png" href="resources/assets/img/favicon.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>학습 관리 프로그램 by 모범시민 </title>
+    <title>학습 관리 프로그램  by 모범시민 </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     <!-- Canonical SEO -->
@@ -45,28 +44,28 @@
     <!--     Fonts and icons     -->
     <link href="resources/assets/css/font-awesome.css" rel="stylesheet" />
     <link href="resources/assets/css/google-roboto-300-700.css" rel="stylesheet" />
-    <style>
-        .embed-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            height: auto;
-        }
+<style>
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; height: auto; }
+.embed-container img,
+.embed-container object,
+.embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
 
-        .embed-container img,
-        .embed-container object,
-        .embed-container embed {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
+<script language="JavaScript">
 
-    </style>
+function checkcategory(){
+    if (course_List.category_select.value == '1') {
+    	course_List.category.readOnly = false;
+    	course_List.category.value = '';
+    	course_List.category.focus();
+    }
+    else {
+    	course_List.category.readOnly = true;
+        course_List.category.value = course_List.category_select.value;
+    }
+}
 
+</script>
 </head>
 
 <body>
@@ -78,13 +77,15 @@
         Tip 3: you can change the color of the sidebar with data-background-color="white | black"
     -->
             <div class="logo">
+                
                 <a href="main" class="simple-text">
                     	ICIA 교육원
                 </a>
+               
             </div>
             <div class="logo logo-mini">
                 <div class="embed-container">
-                    <a href="main" class="simple-text">
+                <a href="main" class="simple-text">
                     	<img src="resources/assets/img/background/IC.jpg" />
                 </a>
                 </div>
@@ -118,7 +119,7 @@
                     </div>
                 </div>
                 <ul class="nav">
-                    <li>
+                    <li class="active">
                         <a href="dashboard.html">
                             <i class="material-icons">dashboard</i>
                             <p><b>관리프로그램 홈</b></p>
@@ -131,9 +132,9 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="course-management">
+                        <div class="collapse in" id="course-management">
                             <ul class="nav">
-                                <li>
+                                <li class="active">
                                     <a href="course_List">과정 목록(course_List.jsp)</a>
                                 </li>
                                 <li>
@@ -158,7 +159,7 @@
                                     <a href="admission_State">입학접수현황(admission_State.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_List">입학접수현황 -> 입학접수목록(admission_List.jsp)</a>
+                                    <a href="admission_List">입학접수목록(admission_List.jsp)</a>
                                 </li>
                                 <li>
                                     <a href="admission_Statistics">모집통계(admission_Statistics.jsp)</a>
@@ -176,21 +177,21 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse in" id="curriculum-management">
+                        <div class="collapse" id="curriculum-management">
                             <ul class="nav">
-
-                                <li class="active">
+                                
+                                <li>
                                     <a href="curriculum_List">진행중인 과정(curriculum_List.jsp)</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="curriculum_TrainingLogList">진행중인 과정 내부 메뉴-훈련일지(curriculum_TrainingLogList.jsp)</a>
+                                <li>
+                                    <a href="curriculum_TrainingLogList">진행중인 과정 내부 메뉴-훈련일지(curriculum_Log.jsp)</a>
                                 </li>
                                 <li>
                                     <a href="curriculum_Grade">진행중인 과정 내부 메뉴-성적관리(curriculum_Grade.jsp)</a>
                                 </li>
                                 <li>
                                     <a href="curriculum_Attendance">진행중인 과정 내부 메뉴-출석관리(curriculum_Attendance.jsp)</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a href="curriculum_CompleteList">관리종료과정(curriculum_CompleteList.jsp)</a>
                                 </li>
@@ -201,7 +202,7 @@
                         </div>
                     </li>
                     <br>
-                    <li>
+               		<li >
                         <a href="#">
                             	<b>업체명 :</b> ㈜ICIA(아이씨아이에이) <b>사업자등록번호 :</b> 121-86-24448
 								<b>주소 :</b> 인천 남구 학익동 663-1 태승빌딩 5층 (1층 홈플러스) <br><b>전화번호 :</b> 032-876-3332
@@ -288,174 +289,165 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="nav-center">
-                                <h3><b class="title">IoT 센서 데이터를 활용한 수치 예보 시각화 과정</b></h3>
-                                <a href="curriculum_List" class="btn">과정 보기</a>
-                                <a href="curriculum_TraineeList" class="btn btn-info">교육생 목록</a>
-                                <a href="curriculum_TrainingLogList" class="btn">훈련 일지 목록</a>
-                                <a href="curriculum_CounselingList" class="btn">상담 일지 목록</a>
-                                <a href="curriculum_GradeTable" class="btn">시험/성적관리</a>
-                                <button class="btn">출결 상황표</button>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="progress progress-line-info">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="card">
-                                <div class="card-content">
-                                    <h4><b class="card-title">교육생 목록</b></h4>
-                                    <div class="toolbar">
-                                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                       			<form name="course_List" action="AddPlayList.ac" method="post" enctype="multipart/form-data">
+                                    <div class="card-header card-header-icon" data-background-color="rose">
+                                        <i class="material-icons">contacts</i>
                                     </div>
-                                    <div class="material-datatables">
-                                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>이름</th>
-                                                    <th>생년월일</th>
-                                                    <th>연락처</th>
-                                                    <th>지역</th>
-                                                    <th>교육 상태</th>
-                                                    <th>취업처</th>
-                                                    <th>자격증</th>
-                                                    <th>상담</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>이름</th>
-                                                    <th>생년월일</th>
-                                                    <th>연락처</th>
-                                                    <th>지역</th>
-                                                    <th>교육 상태</th>
-                                                    <th>취업처</th>
-                                                    <th>자격증</th>
-                                                    <th>상담</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">홍길동</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">곽예자</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">권영배</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">배여랑</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">임태훈</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">전영걸</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">조경순</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">조만기</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">황원자</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-                                                <tr>
-                                                    <th><a href="curriculum_Profile">황희아</a></th>
-                                                    <th>1995.09.13</th>
-                                                    <th>010-1111-1111</th>
-                                                    <th>인천</th>
-                                                    <th>교육중</th>
-                                                    <th></th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                </tr>
-
-                                            </tbody>
-                                        </table>
+                                    <div class="card-content">
+                                        <h4 class="card-title">과정 목록 보기 테스트</h4>
+                                       <div class="progress progress-line-info">
+                                       		<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                       		</div>
+                                       </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <!--  -->
+                                        <p class="text-warning">과정 목록</p>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                        </div>
+                                        <div class="form-group label-floating">
+                                        <!-- 카테고리 선택. 나타나는 옵션 목록은 현재 등록되어 있는 카테고리에 따라 자동으로 추가되어 나타나도록 한다.  -->
+                                        <!-- DB에서 카테고리 목록을 불러와서 옵션 선택메뉴에 출력한다 -->
+                                        <!-- 직접입력으로 새로운 카테고리 등록시 다음번 강의 등록 시에 카테고리 목록에 추가되어 나타난다. -->
+                                        <!-- checkcategory()메소드로 옵션에 나타난 목록을 선택 하면 자동으로 입력창에 적용된다. -->
+                                        <!-- 직접입력을 통해 새로운 카테고리를 등록 가능하다. -->
+                                            <select name="category_select" class="form-control" id="category_select" onChange="checkcategory();">
+   											<option value="" selected>카테고리선택</option>
+   											<c:forEach var = "category_List" items = "${category_List }">
+  			 								<option value="${category_List.cacode}">${category_List.caname }</option>
+  			 								</c:forEach>
+  			 								<option value="2">직asd</option>
+  			 								<option value="3">직dddddd</option>
+  											<option value="1">직접입력</option>
+											</select>
+											<input name="category" type="text" class="form-control active" id="category" size="20">
+                                        </div>
+                  						<br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <p class="text-warning">강의등급</p>
+                                        <div class="progress progress-line-warning">
+                                               <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                               </div>
+                                        </div>
+                                     <!-- 강의 등급입력 또한 카테고리와  같은 기능을 한다. -->
+                                        <div class="form-group label-floating">
+                                            <select name="lecture_level_select" size="1" class="form-control" id="lecture_level_select" onChange="checklecture_level();" required="required"  >
+											<option value="" selected>강의등급선택...</option>
+											<c:forEach var="list" items="${LectureList}">
+											<option value='${list.lecture_level }'>${list.lecture_level }</option>
+											</c:forEach>
+											<option value="2">123123123</option>
+											<option value="3">asdfasdfasdf</option>
+											<option value="1">직접입력</option>
+											</select>
+											<input name="lecture_level" type="text" class="form-control" id="lecture_level" size="20" placeholder="영문입력...">
+										</div>
+										<br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <p class="text-warning">강의등급 이미지</p>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                            </div>
+                                            <!-- 이미지를 추가 할 수 있다. 현재 업로드 하고자 하는 이미지를 선택 할 시 어떠한 이미지가 업로드 되는지 미리보기 할 수 있다. -->
+                                            <!-- 미리보기후 다른 이미지로 변경 가능하다. -->
+                                        <div class="form-group label-floating">
+                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                <!-- 업로드 하고자 하는 이미지 미리보기 -->
+                                                <div class="fileinput-new thumbnail">
+                                                    <img src="assets/img/image_placeholder.jpg" alt="...">
+                                                </div>
+                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                <div>
+                                                    <span class="btn btn-rose btn-round btn-file">
+                                                        <span class="fileinput-new">강의 등급 이미지</span>
+                                                        <span class="fileinput-exists">바꾸기</span>
+                                                        <input type="file" name="lecture_image" class="form-control" />
+                                                    </span>
+                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>지우기</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        
+                                        <!-- 챕터 제목 입력 -->
+                                        <p class="text-warning">챕터 제목</p>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                            </div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">챕터 제목
+                                                <star>*</star>
+                                            </label>
+                                           <input type="text" name="chapter_subject" id="chapter_subject" class="form-control" >
+				
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <!-- 강의 영상 입력 소스코드 형태로 입력 받는다 -->
+                                        <p class="text-warning">강의영상 등록</p>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                            </div>
+                                        <div class="form-group label-floating">
+                                        
+                                            <label class="control-label">강의영상 등록(소스코드)...
+                                                <star>*</star>
+                                            </label>
+                                            <textarea cols="50" rows="5" name="chapter_url" id="chapter_url" class="form-control"></textarea>
+				
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <!-- 챕터목표 입력 -->
+                                        <p class="text-warning">챕터목표</p>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                            </div>
+                                        <div class="form-group label-floating">
+                                            <label class="control-label">챕터 목표
+                                                <star>*</star>
+                                            </label>
+                                           <textarea cols="50" rows="5" name="chapter_objectives" class="form-control" ></textarea>
+										</div>
+										<br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div class="progress progress-line-warning">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
+                                                </div>
+                                            </div>
+                                        <div class="category form-category">
+                                            <star>*</star> Required fields</div>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-rose btn-fill btn-wd">강의 등록</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <!-- end content-->
+                                </form>
                             </div>
-                            <!--  end card  -->
                         </div>
-                        <!-- end col-md-12 -->
                     </div>
-                    <!-- end row -->
                 </div>
             </div>
             <footer class="footer">
@@ -488,9 +480,10 @@
                         &copy;
                         <script>
                             document.write(new Date().getFullYear())
-
                         </script>
-                        <a href="">㈜ICIA(아이씨아이에이) </a>사업자등록번호 : 121-86-24448 주소 : 인천 남구 학익동 663-1 태승빌딩 5층 (1층 홈플러스) 전화번호 : 032-876-3332 Copyrights(c) ㈜ICIA 2015 all rights reserved.</p>
+                        <a href="">㈜ICIA(아이씨아이에이) </a>사업자등록번호 : 121-86-24448
+주소 : 인천 남구 학익동 663-1 태승빌딩 5층 (1층 홈플러스) 전화번호 : 032-876-3332
+Copyrights(c) ㈜ICIA 2015 all rights reserved.</p>
                 </div>
             </footer>
         </div>
@@ -610,7 +603,7 @@
 <!-- Sliders Plugin -->
 <script src="resources/assets/js/nouislider.min.js"></script>
 <!--  Google Maps Plugin    -->
-<!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+<!--<script src="resources/resources/assets/js/jquery.select-bootstrap.js"></script>-->
 <!-- Select Plugin -->
 <script src="resources/assets/js/jquery.select-bootstrap.js"></script>
 <!--  DataTables.net Plugin    -->
@@ -628,25 +621,5 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="resources/assets/js/demo.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#datatables').DataTable({
-            "pagingType": "full_numbers",
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            responsive: true,
-            language: {
-                search: "_INPUT_",
-                searchPlaceholder: "검색어 입력",
-            }
-
-        });
-    });
-
-</script>
-
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/components/panels.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:33:48 GMT -->
-
 </html>

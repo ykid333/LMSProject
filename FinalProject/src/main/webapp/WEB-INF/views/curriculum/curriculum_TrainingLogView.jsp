@@ -154,22 +154,22 @@
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#recruitment-management">
+                        <a data-toggle="collapse" href="#course-management">
                             <i class="material-icons">class</i>
                             <p><b>과정 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="recruitment-management">
+                        <div class="collapse" id="course-management">
                             <ul class="nav">
                                 <li>
-                                    <a href="recruitment_List">과정 목록(recruitment_List.jsp)</a>
+                                    <a href="course_List">과정 목록(course_List.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="recruitment_Regist">과정 등록(recruitment_Regist.jsp)</a>
+                                    <a href="course_Regist">과정 등록(course_Regist.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="recruitment_Setting">훈련분야설정(recruitment_Setting.jsp)</a>
+                                    <a href="course_Setting">훈련분야설정(course_Setting.jsp)</a>
                                 </li>
                             </ul>
                         </div>

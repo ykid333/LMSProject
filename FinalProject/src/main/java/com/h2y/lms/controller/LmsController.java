@@ -46,24 +46,30 @@ public class LmsController {
 	
 	//--과정관리 메뉴--
 	//과정 목록 페이지
-	@RequestMapping(value = "recruitment_List", method = RequestMethod.GET)
-	public String recruitment_List() {
+	@RequestMapping(value = "course_List", method = RequestMethod.GET)
+	public ModelAndView course_List() {
 		
-		return "recruitment/recruitment_List";
+		System.out.println("왔섭?");
+		
+		mav = new ModelAndView();
+		
+		mav = cs.category_List();
+		
+		return mav;
 	}
 	
 	//과정 등록 페이지
-	@RequestMapping(value = "recruitment_Regist", method = RequestMethod.GET)
-	public String recruitment_Regist() {
+	@RequestMapping(value = "course_Regist", method = RequestMethod.GET)
+	public String course_Regist() {
 		
-		return "recruitment/recruitment_Regist";
+		return "course/course_Regist";
 	}
 	
 	//훈련분야설정 페이지
-	@RequestMapping(value = "recruitment_Setting", method = RequestMethod.GET)
-	public String recruitment_Setting() {
+	@RequestMapping(value = "course_Setting", method = RequestMethod.GET)
+	public String course_Setting() {
 		
-		return "recruitment/recruitment_Setting";
+		return "course/course_Setting";
 	}
 	
 	//--입학 관리 메뉴--
