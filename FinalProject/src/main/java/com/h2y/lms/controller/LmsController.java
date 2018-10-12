@@ -9,11 +9,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.h2y.lms.service.CourseService;
 import com.h2y.lms.service.CurriculumService;
+import com.h2y.lms.vo.CourseVO;
 import com.h2y.lms.vo.CurriculumVO;
 
 /**
@@ -23,9 +26,13 @@ import com.h2y.lms.vo.CurriculumVO;
 public class LmsController {
 	
 	@Autowired
-	private CurriculumService cs;
+	private CurriculumService css;
+	
+	@Autowired
+	private CourseService cs;
 	private ModelAndView mav;
 	private CurriculumVO curriculumVO;
+	private CourseVO courseVO;
 	
 	
 	
@@ -44,33 +51,59 @@ public class LmsController {
 	}
 	
 	
-	//--과정관리 메뉴--
-	//과정 목록 페이지
-	@RequestMapping(value = "course_List", method = RequestMethod.GET)
-	public ModelAndView course_List() {
+	//과정 등록 페이지
+	@RequestMapping(value = "course_Regist", method = RequestMethod.GET)
+	public ModelAndView course_Regist() {
 		
-		System.out.println("왔섭?");
+		System.out.println("컨트롤러 : course_Regist 왔섭?");
 		
 		mav = new ModelAndView();
 		
-		mav = cs.category_List();
+		mav = cs.course_Regist();
 		
 		return mav;
 	}
 	
-	//과정 등록 페이지
-	@RequestMapping(value = "course_Regist", method = RequestMethod.GET)
-	public String course_Regist() {
+	//과정분류설정 페이지
+	@RequestMapping(value = "course_Setting", method = RequestMethod.GET)
+	public ModelAndView course_Setting() {
 		
-		return "course/course_Regist";
+		System.out.println("컨트롤러 : course_Setting 왔섭?");
+		
+		mav = new ModelAndView();
+		
+		mav = cs.course_Setting();
+		
+		return mav;
 	}
 	
-	//훈련분야설정 페이지
-	@RequestMapping(value = "course_Setting", method = RequestMethod.GET)
-	public String course_Setting() {
+	//새 과정분류  등록
+	@RequestMapping(value = "courseAdd", method = RequestMethod.POST)
+	public ModelAndView courseAdd(@ModelAttribute CourseVO courseVO) {
 		
-		return "course/course_Setting";
+		System.out.println("컨트롤러 : courseAdd 왔섭?");
+		System.out.println("컨트롤러 : courseAdd 새 과정명 = "+courseVO);
+		
+		mav = new ModelAndView();
+		
+		mav = cs.courseAdd(courseVO);
+		
+		return mav;
 	}
+	
+	
+	
+	//--과정관리 메뉴--
+	//과정 목록 페이지
+	@RequestMapping(value = "course_List", method = RequestMethod.GET)
+	public String course_List() {
+		
+		return "course/course_List";
+	}
+	
+	
+	
+	
 	
 	//--입학 관리 메뉴--
 	//입학접수현황 페이지
@@ -108,7 +141,7 @@ public class LmsController {
 		System.out.println("왔섭?");
 		mav = new ModelAndView();
 		
-		mav = cs.curriculumList();
+		mav = css.curriculumList();
 		
 		return mav;
 	}
