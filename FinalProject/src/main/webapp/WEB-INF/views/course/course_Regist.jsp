@@ -95,9 +95,6 @@
 
     </style>
 
-<!-- Ajax를 이용한 아이디 중복 확인 기능 -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
 </head>
 
@@ -165,12 +162,12 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="course-management">
+                        <div class="collapse in" id="course-management">
                             <ul class="nav">
                                 <li>
                                     <a href="course_List">과정 목록(course_List.jsp)</a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="course_Regist">과정 등록(course_Regist.jsp)</a>
                                 </li>
                                 <li>
@@ -338,23 +335,24 @@
                                     <br>
                                     <b>○ 과정관련기본정보</b>
                                     <br>
+                                    <form action="course_Regist_commit" method="POST" name="course_Regist_commit">
                                     <table class="table">
                                         <tr>
                                             <td class="td" style="width:15%;">교육 과정</td>
                                             <td class="td" colspan="3">
-                                            	<select name="course_select" class="form-control" id="course_select">
+                                            	<select name="cs_cd" class="form-control" id="cs_cd">
    													<option value="" selected>교육 과정 선택</option>
    													<c:forEach var = "course_Regist" items = "${course_Regist }">
-  			 										<option value="${course_Regist.cocode }">${course_Regist.coname }</option>
+  			 										<option value="${course_Regist.cs_cd }">${course_Regist.cs_nm }</option>
   			 										</c:forEach>
   												</select>
   											</td>
                                         </tr>
                                         <tr>
                                             <td class="td" style="width:15%;">교육시작일</td>
-                                            <td class="td" style="width:35%;"><input type="text" class="form-control datepicker"  /></td>
+                                            <td class="td" style="width:35%;"><input type="date" value="" name="cla_st" /></td>
                                             <td class="td" style="width:15%;">교육종료일</td>
-                                            <td class="td" style="width:35%;"><input type="text" class="form-control datepicker" /></td>
+                                            <td class="td" style="width:35%;"><input type="date" value="" name="cla_ed" /></td>
                                         </tr>
                                     </table>
                                     <br>
@@ -364,10 +362,10 @@
                                         <tr>
                                             <td class="td" style="width:15%;">강의실</td>
                                             <td class="td" colspan="4">
-                                            	<select name="rooms_select" class="form-control" id="rooms_select">
+                                            	<select name="rm_cd" class="form-control" id="rm_cd">
    													<option value="" selected>강의실선택</option>
    													<c:forEach var = "rooms_select" items = "${rooms_select }">
-  			 										<option value="${rooms_select.rocode }">${rooms_select.roname }</option>
+  			 										<option value="${rooms_select.rm_cd }">${rooms_select.rm_nm }</option>
   			 										</c:forEach>
   												</select>
                                             </td>
@@ -375,10 +373,17 @@
                                         <tr>
                                             <td class="td" style="width:15%;">담당교수</td>
                                             <td class="td" colspan="4">
-                                            	<select name="course_select" class="form-control" id="course_select">
+                                            	<select name="emp_cd" class="form-control" id="emp_cd">
    													<option value="" selected>담당 교수 선택</option>
-   													<c:forEach var = "course_Regist" items = "${course_Regist }">
-  			 										<option value="${course_Regist.cocode }">${course_Regist.coname }</option>
+   													<c:forEach var = "employee_select" items = "${employee_select }">
+   														<c:forEach var = "professor_List" items = "${professor_List}">
+   														<c:choose>
+   															<c:when test="${professor_List.emp_cd == employee_select.emp_cd }"><option value="" disabled>${employee_select.emp_nm } (담당 클래스가 있습니다.)</option></c:when>
+   															<c:otherwise> <option value="${employee_select.emp_cd }">${employee_select.emp_nm }</option> </c:otherwise>
+   														</c:choose>
+   														
+   														</c:forEach>
+  			 										
   			 										</c:forEach>
   												</select>
                                             </td>
@@ -391,12 +396,13 @@
                                             <td class="td"></td>
                                         </tr>
                                         <tr>
-                                            <td class="td"></td>
+                                            <td class="td"><input type="submit"> </td>
                                             <td class="td"></td>
                                             <td class="td"></td>
                                             <td class="td"></td>
                                         </tr>
                                     </table>
+                                    </form>
                                     <br>
                                     <b>○ </b>
                                     <br>

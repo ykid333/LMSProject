@@ -4,8 +4,6 @@
 <configuration>
 	<typeAliases> 
 		<typeAlias alias="board" type="com.h2y.lms.vo.BoardVO"/>
-		<typeAlias alias="curriculum" type="com.h2y.lms.vo.CurriculumVO"/>
-		<typeAlias alias="course" type="com.h2y.lms.vo.CourseVO"/>
-		<typeAlias alias="rooms" type="com.h2y.lms.vo.RoomsVO"/>
+		<typeAlias alias="lms" type="com.h2y.lms.vo.LmsVO"/>
 	</typeAliases>
 </configuration>

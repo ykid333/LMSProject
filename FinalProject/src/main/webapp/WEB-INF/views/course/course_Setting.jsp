@@ -120,7 +120,7 @@
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="course-management">
+                        <div class="collapse in" id="course-management">
                             <ul class="nav">
                                 <li>
                                     <a href="course_List">과정 목록(course_List.jsp)</a>
@@ -128,7 +128,7 @@
                                 <li>
                                     <a href="course_Regist">과정 등록(course_Regist.jsp)</a>
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="course_Setting">훈련분야설정(course_Setting.jsp)</a>
                                 </li>
                             </ul>
@@ -286,13 +286,13 @@
 	</tr>
 	<c:forEach var="course_Setting" items = "${course_Setting }">
 	<tr>
-		<td>${course_Setting.cocode }</td>
-		<td>${course_Setting.coname }</td>
+		<td>${course_Setting.cs_cd }</td>
+		<td>${course_Setting.cs_nm }</td>
 	</tr>
 	</c:forEach>
 
 	<tr>
-	<td>새 과정코드 <input type="text" name="cocode">새 과정명 <input type="text" name="coname"> </td>
+	<td>새 과정코드 <input type="text" name="cs_cd">새 과정명 <input type="text" name="cs_nm"> </td>
 	<td><input type="submit" value="등록"> </td>
 	</tr>
 </table>

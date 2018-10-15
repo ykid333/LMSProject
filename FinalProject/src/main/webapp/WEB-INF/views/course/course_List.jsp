@@ -55,21 +55,6 @@
 .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 </style>
 
-<script language="JavaScript">
-
-function checkcategory(){
-    if (course_List.category_select.value == '1') {
-    	course_List.category.readOnly = false;
-    	course_List.category.value = '';
-    	course_List.category.focus();
-    }
-    else {
-    	course_List.category.readOnly = true;
-        course_List.category.value = course_List.category_select.value;
-    }
-}
-
-</script>
 </head>
 
 <body>
@@ -291,168 +276,99 @@ function checkcategory(){
                 </div>
             </nav>
             <div class="content">
+                course_List.jsp
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8 col-md-offset-2">
+                            <br>
+                            <div class="progress progress-line-info">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                </div>
+                            </div>
+                            <br>
                             <div class="card">
-                       			<form name="course_List" action="AddPlayList.ac" method="post" enctype="multipart/form-data">
-                                    <div class="card-header card-header-icon" data-background-color="rose">
-                                        <i class="material-icons">contacts</i>
+                                <div class="card-content">
+                                	<h2 align='center'>교육과정목록</h2><br>
+                                    <div class="toolbar">
+                                        	설명을 입력
                                     </div>
-                                    <div class="card-content">
-                                        <h4 class="card-title">과정 목록 보기 테스트</h4>
-                                       <div class="progress progress-line-info">
-                                       		<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                       		</div>
-                                       </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <!--  -->
-                                        <p class="text-warning">과정 목록</p>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                        </div>
-                                        <div class="form-group label-floating">
-                                        <!-- 카테고리 선택. 나타나는 옵션 목록은 현재 등록되어 있는 카테고리에 따라 자동으로 추가되어 나타나도록 한다.  -->
-                                        <!-- DB에서 카테고리 목록을 불러와서 옵션 선택메뉴에 출력한다 -->
-                                        <!-- 직접입력으로 새로운 카테고리 등록시 다음번 강의 등록 시에 카테고리 목록에 추가되어 나타난다. -->
-                                        <!-- checkcategory()메소드로 옵션에 나타난 목록을 선택 하면 자동으로 입력창에 적용된다. -->
-                                        <!-- 직접입력을 통해 새로운 카테고리를 등록 가능하다. -->
-                                            <select name="category_select" class="form-control" id="category_select" onChange="checkcategory();">
-   											<option value="" selected>카테고리선택</option>
-   											<c:forEach var = "category_List" items = "${category_List }">
-  			 								<option value="${category_List.cacode}">${category_List.caname }</option>
-  			 								</c:forEach>
-  			 								<option value="2">직asd</option>
-  			 								<option value="3">직dddddd</option>
-  											<option value="1">직접입력</option>
-											</select>
-											<input name="category" type="text" class="form-control active" id="category" size="20">
-                                        </div>
-                  						<br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <p class="text-warning">강의등급</p>
-                                        <div class="progress progress-line-warning">
-                                               <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                               </div>
-                                        </div>
-                                     <!-- 강의 등급입력 또한 카테고리와  같은 기능을 한다. -->
-                                        <div class="form-group label-floating">
-                                            <select name="lecture_level_select" size="1" class="form-control" id="lecture_level_select" onChange="checklecture_level();" required="required"  >
-											<option value="" selected>강의등급선택...</option>
-											<c:forEach var="list" items="${LectureList}">
-											<option value='${list.lecture_level }'>${list.lecture_level }</option>
-											</c:forEach>
-											<option value="2">123123123</option>
-											<option value="3">asdfasdfasdf</option>
-											<option value="1">직접입력</option>
-											</select>
-											<input name="lecture_level" type="text" class="form-control" id="lecture_level" size="20" placeholder="영문입력...">
-										</div>
-										<br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <p class="text-warning">강의등급 이미지</p>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                            </div>
-                                            <!-- 이미지를 추가 할 수 있다. 현재 업로드 하고자 하는 이미지를 선택 할 시 어떠한 이미지가 업로드 되는지 미리보기 할 수 있다. -->
-                                            <!-- 미리보기후 다른 이미지로 변경 가능하다. -->
-                                        <div class="form-group label-floating">
-                                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
-                                                <!-- 업로드 하고자 하는 이미지 미리보기 -->
-                                                <div class="fileinput-new thumbnail">
-                                                    <img src="assets/img/image_placeholder.jpg" alt="...">
-                                                </div>
-                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                <div>
-                                                    <span class="btn btn-rose btn-round btn-file">
-                                                        <span class="fileinput-new">강의 등급 이미지</span>
-                                                        <span class="fileinput-exists">바꾸기</span>
-                                                        <input type="file" name="lecture_image" class="form-control" />
-                                                    </span>
-                                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i>지우기</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        
-                                        <!-- 챕터 제목 입력 -->
-                                        <p class="text-warning">챕터 제목</p>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                            </div>
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">챕터 제목
-                                                <star>*</star>
-                                            </label>
-                                           <input type="text" name="chapter_subject" id="chapter_subject" class="form-control" >
-				
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <!-- 강의 영상 입력 소스코드 형태로 입력 받는다 -->
-                                        <p class="text-warning">강의영상 등록</p>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                            </div>
-                                        <div class="form-group label-floating">
-                                        
-                                            <label class="control-label">강의영상 등록(소스코드)...
-                                                <star>*</star>
-                                            </label>
-                                            <textarea cols="50" rows="5" name="chapter_url" id="chapter_url" class="form-control"></textarea>
-				
-                                        </div>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <!-- 챕터목표 입력 -->
-                                        <p class="text-warning">챕터목표</p>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                            </div>
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">챕터 목표
-                                                <star>*</star>
-                                            </label>
-                                           <textarea cols="50" rows="5" name="chapter_objectives" class="form-control" ></textarea>
-										</div>
-										<br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <div class="progress progress-line-warning">
-                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; ">
-                                                </div>
-                                            </div>
-                                        <div class="category form-category">
-                                            <star>*</star> Required fields</div>
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-rose btn-fill btn-wd">강의 등록</button>
-                                        </div>
+                                    <div class="material-datatables">
+                                        <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                            <tfoot>
+                                                <tr>
+                                                    <th>진행 상황</th>
+                                                    <th>교육 과정명</th>
+                                                    <th>담당 교수</th>
+                                                    <th>교육시작일</th>
+                                                    <th>교육 종료일</th>
+                                                    <th>접수</th>
+                                                    <th>접수율</th>
+                                                    <th>가접수</th>
+                                                    <th>접수</th>
+                                                    <th class="text-info">면접</th>
+                                                    <th class="text-success">합격</th>
+                                                    <th class="text-rose">불합격</th>
+                                                    <th>취소</th>
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
+                                                    
+                                                </tr>
+                                            </tfoot>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>진행 상황</th>
+                                                    <th>교육 과정명</th>
+                                                    <th>담당 교수</th>
+                                                    <th>교육시작일</th>
+                                                    <th>교육 종료일</th>
+                                                    <th>접수</th>
+                                                    <th>접수율</th>
+                                                    <th>가접수</th>
+                                                    <th>접수</th>
+                                                    <th>면접</th>
+                                                    <th class="text-success">합격</th>
+                                                    <th class="text-rose">불합격</th>
+                                                    <th>취소</th>
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
+                                                    
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                            <c:forEach var = "course_List" items = "${course_List}">
+                                            	
+                                                <tr>
+                                                    <td class="text-rose">모집중/교육중</td>
+                                                    <td><a href="#">${course_List.cs_nm }</a></td>
+                                                    <td>
+                                                    	<c:forEach var = "professor_List" items = "${professor_List}">
+                                                    		<c:if test="${professor_List.cs_cd == course_List.cs_cd && professor_List.times == course_List.times }">${professor_List.emp_nm }</c:if>
+                                                    	</c:forEach>
+                                                    </td>
+                                                    <td>${course_List.cla_st }</td>
+                                                    <td>${course_List.cla_ed }</td>
+                                                    <th>${course_List.rm_nm }</th>
+                                                    <th>30%</th>
+                                                    <th>0</th>
+                                                    <th>9</th>
+                                                    <th class="text-info">0</th>
+                                                    <th class="text-success">0</th>
+                                                    <th class="text-rose">0</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                    <th>0</th>
+                                                </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </form>
+                                </div>
+                                <!-- end content-->
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <footer class="footer">
                 <div class="container-fluid">
