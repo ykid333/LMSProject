@@ -132,25 +132,25 @@
                         </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#admission-management">
+                        <a data-toggle="collapse" href="#pfd-management">
                             <i class="material-icons">class</i>
-                            <p><b>입학 관리</b>
+                            <p><b>인원 및 시설 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="admission-management">
+                        <div class="collapse" id="pfd-management">
                             <ul class="nav">
                                 <li>
-                                    <a href="admission_State">입학접수현황(admission_State.jsp)</a>
+                                    <a href="pfd_Employee">직원 관리(pfd_Employee.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_List">입학접수목록(admission_List.jsp)</a>
+                                    <a href="pfd_Student">교육생 관리(pfd_Student.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Statistics">모집통계(admission_Statistics.jsp)</a>
+                                    <a href="pfd_Facilities">시설관리(pfd_Facilities.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Search">접수자 검색(admission_Search.jsp)</a>
+                                    <a href="#">임시메뉴(#)</a>
                                 </li>
                             </ul>
                         </div>

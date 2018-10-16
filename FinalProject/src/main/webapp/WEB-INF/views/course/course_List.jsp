@@ -136,25 +136,25 @@
                         </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#admission-management">
+                        <a data-toggle="collapse" href="#pfd-management">
                             <i class="material-icons">class</i>
-                            <p><b>입학 관리</b>
+                            <p><b>인원 및 시설 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="admission-management">
+                        <div class="collapse" id="pfd-management">
                             <ul class="nav">
                                 <li>
-                                    <a href="admission_State">입학접수현황(admission_State.jsp)</a>
+                                    <a href="pfd_Employee">직원 관리(pfd_employee.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_List">입학접수목록(admission_List.jsp)</a>
+                                    <a href="pfd_Student">교육생 관리(pfd_student.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Statistics">모집통계(admission_Statistics.jsp)</a>
+                                    <a href="pfd_Facilities">시설관리(pfd_facilities.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Search">접수자 검색(admission_Search.jsp)</a>
+                                    <a href="#">임시메뉴(#)</a>
                                 </li>
                             </ul>
                         </div>
@@ -294,69 +294,43 @@
                                     </div>
                                     <div class="material-datatables">
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
-                                            <tfoot>
+                                            <thead>
                                                 <tr>
                                                     <th>진행 상황</th>
                                                     <th>교육 과정명</th>
                                                     <th>담당 교수</th>
-                                                    <th>교육시작일</th>
+                                                    <th>교육 장소</th>
+                                                    <th>교육 시작일</th>
                                                     <th>교육 종료일</th>
-                                                    <th>접수</th>
-                                                    <th>접수율</th>
-                                                    <th>가접수</th>
-                                                    <th>접수</th>
-                                                    <th class="text-info">면접</th>
-                                                    <th class="text-success">합격</th>
-                                                    <th class="text-rose">불합격</th>
-                                                    <th>취소</th>
-                                                    <th>수정</th>
-                                                    <th>삭제</th>
-                                                    
                                                 </tr>
-                                            </tfoot>
+                                            </thead>
                                             <tfoot>
                                                 <tr>
                                                     <th>진행 상황</th>
                                                     <th>교육 과정명</th>
                                                     <th>담당 교수</th>
-                                                    <th>교육시작일</th>
+                                                    <th>교육 시작일</th>
                                                     <th>교육 종료일</th>
-                                                    <th>접수</th>
-                                                    <th>접수율</th>
-                                                    <th>가접수</th>
-                                                    <th>접수</th>
-                                                    <th>면접</th>
-                                                    <th class="text-success">합격</th>
-                                                    <th class="text-rose">불합격</th>
-                                                    <th>취소</th>
-                                                    <th>수정</th>
-                                                    <th>삭제</th>
-                                                    
+                                                    <th>교육 장소</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                             <c:forEach var = "course_List" items = "${course_List}">
-                                            	
-                                                <tr>
-                                                    <td class="text-rose">모집중/교육중</td>
-                                                    <td><a href="#">${course_List.cs_nm }</a></td>
+                                            	<tr>
+                                                    <c:choose>
+   														<c:when test="${course_List.cla_cd eq 'CLA01' }" ><td class="text-rose">모집중</td></c:when>
+   														<c:when test="${course_List.cla_cd eq 'CLA02' }" ><td class="text-success">교육중</td></c:when>
+   														<c:otherwise> <td>교육종료</td> </c:otherwise>
+   													</c:choose>
+                                                    <td><a href="course_Student">${course_List.cs_nm }</a></td>
                                                     <td>
                                                     	<c:forEach var = "professor_List" items = "${professor_List}">
                                                     		<c:if test="${professor_List.cs_cd == course_List.cs_cd && professor_List.times == course_List.times }">${professor_List.emp_nm }</c:if>
                                                     	</c:forEach>
                                                     </td>
+                                                    <th>${course_List.rm_nm }</th>
                                                     <td>${course_List.cla_st }</td>
                                                     <td>${course_List.cla_ed }</td>
-                                                    <th>${course_List.rm_nm }</th>
-                                                    <th>30%</th>
-                                                    <th>0</th>
-                                                    <th>9</th>
-                                                    <th class="text-info">0</th>
-                                                    <th class="text-success">0</th>
-                                                    <th class="text-rose">0</th>
-                                                    <th>0</th>
-                                                    <th>0</th>
-                                                    <th>0</th>
                                                 </tr>
                                                 </c:forEach>
                                             </tbody>
@@ -541,5 +515,23 @@ Copyrights(c) ㈜ICIA 2015 all rights reserved.</p>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="resources/assets/js/demo.js"></script>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "검색어 입력",
+            }
+
+        });
+    });
+
+</script>
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/components/panels.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:33:48 GMT -->
 </html>

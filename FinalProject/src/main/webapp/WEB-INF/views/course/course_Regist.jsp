@@ -177,25 +177,25 @@
                         </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#admission-management">
+                        <a data-toggle="collapse" href="#pfd-management">
                             <i class="material-icons">class</i>
-                            <p><b>입학 관리</b>
+                            <p><b>인원 및 시설 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="admission-management">
+                        <div class="collapse" id="pfd-management">
                             <ul class="nav">
                                 <li>
-                                    <a href="admission_State">입학접수현황(admission_State.jsp)</a>
+                                    <a href="pfd_Employee">직원 관리(pfd_employee.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_List">입학접수목록(admission_List.jsp)</a>
+                                    <a href="pfd_Student">교육생 관리(pfd_student.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Statistics">모집통계(admission_Statistics.jsp)</a>
+                                    <a href="pfd_Facilities">시설관리(pfd_facilities.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Search">접수자 검색(admission_Search.jsp)</a>
+                                    <a href="#">임시메뉴(#)</a>
                                 </li>
                             </ul>
                         </div>
@@ -376,14 +376,7 @@
                                             	<select name="emp_cd" class="form-control" id="emp_cd">
    													<option value="" selected>담당 교수 선택</option>
    													<c:forEach var = "employee_select" items = "${employee_select }">
-   														<c:forEach var = "professor_List" items = "${professor_List}">
-   														<c:choose>
-   															<c:when test="${professor_List.emp_cd == employee_select.emp_cd }"><option value="" disabled>${employee_select.emp_nm } (담당 클래스가 있습니다.)</option></c:when>
-   															<c:otherwise> <option value="${employee_select.emp_cd }">${employee_select.emp_nm }</option> </c:otherwise>
-   														</c:choose>
-   														
-   														</c:forEach>
-  			 										
+   														<option value="${employee_select.emp_cd }">${employee_select.emp_nm }</option>
   			 										</c:forEach>
   												</select>
                                             </td>

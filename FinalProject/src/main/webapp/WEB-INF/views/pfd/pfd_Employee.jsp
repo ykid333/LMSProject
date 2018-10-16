@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <!-- Mirrored from demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Mar 2017 21:29:18 GMT -->
@@ -62,9 +65,11 @@
         Tip 3: you can change the color of the sidebar with data-background-color="white | black"
     -->
             <div class="logo">
-            	<a href="main" class="simple-text">
+                
+                <a href="main" class="simple-text">
                     	ICIA 교육원
                 </a>
+               
             </div>
             <div class="logo logo-mini">
                 <div class="embed-container">
@@ -102,53 +107,53 @@
                     </div>
                 </div>
                 <ul class="nav">
-                    <li>
+                    <li class="active">
                         <a href="dashboard.html">
                             <i class="material-icons">dashboard</i>
                             <p><b>관리프로그램 홈</b></p>
                         </a>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#recruitment-management">
+                        <a data-toggle="collapse" href="#course-management">
                             <i class="material-icons">class</i>
                             <p><b>과정 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse" id="recruitment-management">
+                        <div class="collapse" id="course-management">
                             <ul class="nav">
                                 <li>
-                                    <a href="recruitment_List">과정 목록(recruitment_List.jsp)</a>
+                                    <a href="course_List">과정 목록(course_List.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="recruitment_Regist">과정 등록(recruitment_Regist.jsp)</a>
+                                    <a href="course_Regist">과정 등록(course_Regist.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="recruitment_Setting">훈련분야설정(recruitment_Setting.jsp)</a>
+                                    <a href="course_Setting">훈련분야설정(course_Setting.jsp)</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a data-toggle="collapse" href="#admission-management">
+                        <a data-toggle="collapse" href="#pfd-management">
                             <i class="material-icons">class</i>
-                            <p><b>입학 관리</b>
+                            <p><b>인원 및 시설 관리</b>
                                 <b class="caret"></b>
                             </p>
                         </a>
-                        <div class="collapse in" id="admission-management">
+                        <div class="collapse in" id="pfd-management">
                             <ul class="nav">
-                                <li>
-                                    <a href="admission_State">입학접수현황(admission_State.jsp)</a>
-                                </li>
                                 <li class="active">
-                                    <a href="admission_List">입학접수현황 -> 입학접수목록(admission_List.jsp)</a>
+                                    <a href="pfd_Employee">직원 관리(pfd_employee.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Statistics">모집통계(admission_Statistics.jsp)</a>
+                                    <a href="pfd_Student">교육생 관리(pfd_student.jsp)</a>
                                 </li>
                                 <li>
-                                    <a href="admission_Search">접수자 검색(admission_Search.jsp)</a>
+                                    <a href="pfd_Facilities">시설관리(pfd_facilities.jsp)</a>
+                                </li>
+                                <li>
+                                    <a href="#">임시메뉴(#)</a>
                                 </li>
                             </ul>
                         </div>
@@ -272,10 +277,31 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="nav-center">
+                                <h3><b class="title">인원 및 시설 관리</b></h3>
+                                <a href="pfd_Employee" class="btn btn-info">전체 직원 목록</a>
+                                <a href="#" class="btn">교육팀 목록</a>
+                                <a href="#" class="btn">취업팀 목록</a>
+                                <a href="#" class="btn">임시팀 목록</a>
+                                <a href="#" class="btn">새 직원 등록</a>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="progress progress-line-info">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+
+                    </div>
+                    <hr>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-content">
-                                <h4><b class="card-title text-primary">IoT 센서 데이터를 활용한 수치 예보 시각화 과정</b></h4> 
+                                    <h4><b class="card-title">직원 목록</b></h4>
                                     <div class="toolbar">
                                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                                     </div>
@@ -283,150 +309,46 @@
                                         <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th>접수 상태</th>
-                                                    <th>승인 상태</th>
+                                                	<th>소속 부서</th>
                                                     <th>이름</th>
-                                                    <th>생년월일</th>
-                                                    <th>대표 연락처</th>
-                                                    <th>지역</th>
-                                                    <th>접수일</th>
-                                                    <th>신청이력</th>
+                                                    <th>주소</th>
+                                                    <th>연락처</th>
+                                                    <th>이메일</th>
+                                                    <th>등록일</th>
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
                                                 </tr>
                                             </thead>
                                             <tfoot>
                                                 <tr>
-                                                    <th>접수 상태</th>
-                                                    <th>승인 상태</th>
+                                                    <th>소속 부서</th>
                                                     <th>이름</th>
-                                                    <th>생년월일</th>
-                                                    <th>대표 연락처</th>
-                                                    <th>지역</th>
-                                                    <th>접수일</th>
-                                                    <th>신청이력</th>
+                                                    <th>직원코드</th>
+                                                    <th>연락처</th>
+                                                    <th>이메일</th>
+                                                    <th>등록일</th>
+                                                    <th>수정</th>
+                                                    <th>삭제</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
+                                               	<c:forEach var = "pfd_Employee" items = "${pfd_Employee }">
                                                 <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>고기경</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
+                                                    <c:choose>
+   														<c:when test="${pfd_Employee.dept_nm eq '교육팀' }" ><td class="text-success">${pfd_Employee.dept_nm }</td></c:when>
+   														<c:when test="${pfd_Employee.dept_nm eq '취업팀' }" ><td class="text-info">${pfd_Employee.dept_nm }</td></c:when>
+   														<c:otherwise> <td>${pfd_Employee.dept_nm }</td> </c:otherwise>
+   													</c:choose>
+                                                    <td>${pfd_Employee.emp_nm }</td>
+                                                    <td>${pfd_Employee.emp_cd }</td>
+                                                    <td>(데이터 입력 예정)</td>
+                                                    <td>(데이터 입력 예정)</td>
+                                                    <td>(데이터 입력 예정)</td>
+                                                    <td>수정</td>
+                                                    <td>삭제</td>
                                                 </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>곽예자</td>
-                                                    <td><p>1993-11-16</p>26</td>
-                                                    <td>010-1111-1234</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>권영배</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>접수중</td>
-                                                    <td><span class="text-danger">미승인</span></td>
-                                                    <td>박어미</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>배여랑</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>임태훈</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>조만기</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>접수중</td>
-                                                    <td><span class="text-danger">미승인</span></td>
-                                                    <td>최사진</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>접수중</td>
-                                                    <td><span class="text-danger">미승인</span></td>
-                                                    <td>황여자</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>화원자</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>홯희아</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                               	</tr>
-                                                <tr>
-                                                    <td>합격</td>
-                                                    <td><span class="text-info">승인</span></td>
-                                                    <td>고기경</td>
-                                                    <td><p>1975-11-16</p>41세</td>
-                                                    <td>010-1111-1111</td>
-                                                    <td>인천</td>
-                                                    <td>2018/04/25</td>
-                                                    <td></td>
-                                                </tr>
-                                            </tbody>
+                                                </c:forEach>
+                                                </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -437,8 +359,8 @@
                         <!-- end col-md-12 -->
                     </div>
                     <!-- end row -->
-                                        </div>
-                                    </div>
+                </div>
+            </div>
             <footer class="footer">
                 <div class="container-fluid">
                     <nav class="pull-left">

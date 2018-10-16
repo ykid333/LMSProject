@@ -4925,11 +4925,11 @@
 				start = 0;
 			}
 		}
-		else if ( action == "first" )
+		else if ( action == "처음" )
 		{
 			start = 0;
 		}
-		else if ( action == "previous" )
+		else if ( action == "이전" )
 		{
 			start = len >= 0 ?
 				start - len :
@@ -4940,14 +4940,14 @@
 			  start = 0;
 			}
 		}
-		else if ( action == "next" )
+		else if ( action == "다음" )
 		{
 			if ( start + len < records )
 			{
 				start += len;
 			}
 		}
-		else if ( action == "last" )
+		else if ( action == "마지막" )
 		{
 			start = Math.floor( (records-1) / len) * len;
 		}
@@ -11276,7 +11276,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "처음",
 
 
 				/**
@@ -11299,7 +11299,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "마지막",
 
 
 				/**
@@ -11322,7 +11322,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "다음",
 
 
 				/**
@@ -11345,7 +11345,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "이전"
 			},
 
 			/**
@@ -11401,7 +11401,7 @@
 			 *    } );
 			 */
 			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-			"sInfo": "_START_번 부터 _END_ 번까지 총 인원_TOTAL_ 명",
+			"sInfo": "_START_번 부터 _END_ 번까지 총 _TOTAL_ 번",
 
 
 			/**
@@ -11847,10 +11847,10 @@
 		 * DataTables features four different built-in options for the buttons to
 		 * display for pagination control:
 		 *
-		 * * `simple` - 'Previous' and 'Next' buttons only
-		 * * 'simple_numbers` - 'Previous' and 'Next' buttons, plus page numbers
-		 * * `full` - 'First', 'Previous', 'Next' and 'Last' buttons
-		 * * `full_numbers` - 'First', 'Previous', 'Next' and 'Last' buttons, plus
+		 * * `simple` - '이전' and '다음' buttons only
+		 * * 'simple_numbers` - '이전' and '다음' buttons, plus page numbers
+		 * * `full` - '처음', '이전', '다음' and '마지막' buttons
+		 * * `full_numbers` - '처음', '이전', '다음' and '마지막' buttons, plus
 		 *   page numbers
 		 *
 		 * Further methods can be added using {@link DataTable.ext.oPagination}.
@@ -14482,11 +14482,11 @@
 
 	$.extend( extPagination, {
 		simple: function ( page, pages ) {
-			return [ 'previous', 'next' ];
+			return [ '이전', '다음' ];
 		},
 
 		full: function ( page, pages ) {
-			return [  'first', 'previous', 'next', 'last' ];
+			return [  '처음', '이전', '다음', '마지막' ];
 		},
 
 		numbers: function ( page, pages ) {
@@ -14494,11 +14494,11 @@
 		},
 
 		simple_numbers: function ( page, pages ) {
-			return [ 'previous', _numbers(page, pages), 'next' ];
+			return [ '이전', _numbers(page, pages), '다음' ];
 		},
 
 		full_numbers: function ( page, pages ) {
-			return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
+			return [ '처음', '이전', _numbers(page, pages), '다음', '마지막' ];
 		},
 
 		// For testing and plug-ins to use
@@ -14540,25 +14540,25 @@
 									container.append('<span class="ellipsis">&#x2026;</span>');
 									break;
 
-								case 'first':
+								case '처음':
 									btnDisplay = lang.sFirst;
 									btnClass = button + (page > 0 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
 
-								case 'previous':
+								case '이전':
 									btnDisplay = lang.sPrevious;
 									btnClass = button + (page > 0 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
 
-								case 'next':
+								case '다음':
 									btnDisplay = lang.sNext;
 									btnClass = button + (page < pages-1 ?
 										'' : ' '+classes.sPageButtonDisabled);
 									break;
 
-								case 'last':
+								case '마지막':
 									btnDisplay = lang.sLast;
 									btnClass = button + (page < pages-1 ?
 										'' : ' '+classes.sPageButtonDisabled);
@@ -15381,25 +15381,25 @@ DataTable.ext.renderer.pageButton.bootstrap = function ( settings, host, idx, bu
 						btnClass = 'disabled';
 						break;
 
-					case 'first':
+					case '처음':
 						btnDisplay = lang.sFirst;
 						btnClass = button + (page > 0 ?
 							'' : ' disabled');
 						break;
 
-					case 'previous':
+					case '이전':
 						btnDisplay = lang.sPrevious;
 						btnClass = button + (page > 0 ?
 							'' : ' disabled');
 						break;
 
-					case 'next':
+					case '다음':
 						btnDisplay = lang.sNext;
 						btnClass = button + (page < pages-1 ?
 							'' : ' disabled');
 						break;
 
-					case 'last':
+					case '마지막':
 						btnDisplay = lang.sLast;
 						btnClass = button + (page < pages-1 ?
 							'' : ' disabled');

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.h2y.lms.service.CourseService;
+import com.h2y.lms.service.PfdService;
 import com.h2y.lms.vo.CurriculumVO;
 import com.h2y.lms.vo.LmsVO;
 
@@ -22,6 +23,9 @@ public class LmsController {
 	
 	@Autowired
 	private CourseService cs;
+	
+	@Autowired
+	private PfdService ps;
 	private ModelAndView mav;
 	private CurriculumVO curriculumVO;
 	private LmsVO lmsVO;
@@ -114,7 +118,22 @@ public class LmsController {
 		return mav;
 	}
 	
-	//--입학 관리 메뉴--
+	
+	//--인원 및 시설 관리 메뉴--
+	
+	//전체 직원 목록 보기 페이지
+	@RequestMapping(value = "pfd_Employee", method = RequestMethod.GET)
+	public ModelAndView pfd_Employee() {
+		
+		System.out.println("컨트롤러 : pfd_Employee 왔섭?");
+			
+		mav = new ModelAndView();
+		
+		mav = ps.pfd_Employee();
+			
+		return mav;
+	}
+	
 	//입학접수현황 페이지
 	@RequestMapping(value = "admission_State", method = RequestMethod.GET)
 	public String admission_State() {
@@ -122,12 +141,7 @@ public class LmsController {
 		return "admission/admission_State";
 	}
 	
-	//입학접수목록 페이지
-	@RequestMapping(value = "admission_List", method = RequestMethod.GET)
-	public String admission_List() {
-		
-		return "admission/admission_List";
-	}
+	
 	
 	//모집통계 페이지
 	@RequestMapping(value = "admission_Statistics", method = RequestMethod.GET)
