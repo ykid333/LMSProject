@@ -7,5 +7,9 @@
 		<typeAlias alias="lms" type="com.h2y.lms.vo.LmsVO"/>
 		<typeAlias alias="emp" type="com.h2y.lms.vo.EmpVO"/>
 		<typeAlias alias="dept" type="com.h2y.lms.vo.DeptVO"/>
+		<typeAlias alias="course" type="com.h2y.lms.vo.CourseVO"/>
+		<typeAlias alias="rooms" type="com.h2y.lms.vo.RoomsVO"/>
+		<typeAlias alias="class" type="com.h2y.lms.vo.ClassVO"/>
+		<typeAlias alias="prof" type="com.h2y.lms.vo.ProfVO"/>
 	</typeAliases>
 </configuration>

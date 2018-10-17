@@ -309,26 +309,26 @@
                                                     <th>진행 상황</th>
                                                     <th>교육 과정명</th>
                                                     <th>담당 교수</th>
+                                                    <th>교육 장소</th>
                                                     <th>교육 시작일</th>
                                                     <th>교육 종료일</th>
-                                                    <th>교육 장소</th>
                                                 </tr>
                                             </tfoot>
                                             <tbody>
                                             <c:forEach var = "course_List" items = "${course_List}">
                                             	<tr>
                                                     <c:choose>
-   														<c:when test="${course_List.cla_cd eq 'CLA01' }" ><td class="text-rose">모집중</td></c:when>
-   														<c:when test="${course_List.cla_cd eq 'CLA02' }" ><td class="text-success">교육중</td></c:when>
+   														<c:when test="${course_List.sta_cd eq 'STA01' }" ><td class="text-rose">모집중</td></c:when>
+   														<c:when test="${course_List.sta_cd eq 'STA02' }" ><td class="text-success">교육중</td></c:when>
    														<c:otherwise> <td>교육종료</td> </c:otherwise>
    													</c:choose>
-                                                    <td><a href="course_Student">${course_List.cs_nm }</a></td>
+                                                    <td><a href="#">${course_List.courseVO.cs_nm }</a></td>
                                                     <td>
                                                     	<c:forEach var = "professor_List" items = "${professor_List}">
                                                     		<c:if test="${professor_List.cs_cd == course_List.cs_cd && professor_List.times == course_List.times }">${professor_List.emp_nm }</c:if>
                                                     	</c:forEach>
                                                     </td>
-                                                    <th>${course_List.rm_nm }</th>
+                                                    <th>${course_List.roomsVO.rm_nm }</th>
                                                     <td>${course_List.cla_st }</td>
                                                     <td>${course_List.cla_ed }</td>
                                                 </tr>

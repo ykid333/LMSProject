@@ -311,7 +311,7 @@
                                                 <tr>
                                                 	<th>소속 부서</th>
                                                     <th>이름</th>
-                                                    <th>주소</th>
+                                                    <th>직원코드</th>
                                                     <th>연락처</th>
                                                     <th>이메일</th>
                                                     <th>등록일</th>
@@ -335,10 +335,11 @@
                                                	<c:forEach var = "pfd_Employee" items = "${pfd_Employee }">
                                                 <tr>
                                                     <c:choose>
-   														<c:when test="${pfd_Employee.dept_nm eq '교육팀' }" ><td class="text-success">${pfd_Employee.dept_nm }</td></c:when>
-   														<c:when test="${pfd_Employee.dept_nm eq '취업팀' }" ><td class="text-info">${pfd_Employee.dept_nm }</td></c:when>
-   														<c:otherwise> <td>${pfd_Employee.dept_nm }</td> </c:otherwise>
-   													</c:choose>
+   														<c:when test="${pfd_Employee.deptVO.dept_nm eq '교육팀' }" ><td class="text-success">${pfd_Employee.deptVO.dept_nm }</td></c:when>
+   														<c:when test="${pfd_Employee.deptVO.dept_nm eq '취업팀' }" ><td class="text-info">${pfd_Employee.deptVO.dept_nm }</td></c:when>
+   														<c:otherwise> <td>${pfd_Employee.deptVO.dept_nm }</td> </c:otherwise>
+   													</c:choose> 
+   													
                                                     <td>${pfd_Employee.emp_nm }</td>
                                                     <td>${pfd_Employee.emp_cd }</td>
                                                     <td>(데이터 입력 예정)</td>
